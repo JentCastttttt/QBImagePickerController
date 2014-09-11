@@ -44,6 +44,8 @@ typedef enum {
 @property (nonatomic, assign) BOOL fullScreenLayoutEnabled;
 
 @property (nonatomic, assign) BOOL allowsMultipleSelection;
+@property (nonatomic, assign) BOOL allowsEdit;
+
 @property (nonatomic, assign) BOOL limitsMinimumNumberOfSelection;
 @property (nonatomic, assign) BOOL limitsMaximumNumberOfSelection;
 @property (nonatomic, assign) NSUInteger minimumNumberOfSelection;

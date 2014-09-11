@@ -23,6 +23,7 @@
 		9E3F5BF219AAE09200854C73 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E3F5BEF19AAE09200854C73 /* Default.png */; };
 		9E3F5BF319AAE09200854C73 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E3F5BF019AAE09200854C73 /* Default-568h@2x.png */; };
 		9E3F5BF419AAE09200854C73 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9E3F5BF119AAE09200854C73 /* Default@2x.png */; };
+		9E50DCA919C17C5000088FB2 /* QBImageEditerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E50DCA819C17C5000088FB2 /* QBImageEditerViewController.m */; };
 		9E6B53A519AAD6400028915A /* QBAssetCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E6B539419AAD6400028915A /* QBAssetCollectionViewController.m */; };
 		9E6B53A619AAD6400028915A /* QBImagePickerAssetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E6B539719AAD6400028915A /* QBImagePickerAssetCell.m */; };
 		9E6B53A719AAD6400028915A /* QBImagePickerAssetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E6B539A19AAD6400028915A /* QBImagePickerAssetView.m */; };
@@ -65,6 +66,9 @@
 		9E3F5BEF19AAE09200854C73 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		9E3F5BF019AAE09200854C73 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		9E3F5BF119AAE09200854C73 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		9E50DCA719C17C5000088FB2 /* QBImageEditerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBImageEditerViewController.h; sourceTree = "<group>"; };
+		9E50DCA819C17C5000088FB2 /* QBImageEditerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBImageEditerViewController.m; sourceTree = "<group>"; };
+		9E50DCAA19C1834300088FB2 /* QBImageEditerViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBImageEditerViewControllerDelegate.h; sourceTree = "<group>"; };
 		9E6B539319AAD6400028915A /* QBAssetCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBAssetCollectionViewController.h; sourceTree = "<group>"; };
 		9E6B539419AAD6400028915A /* QBAssetCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBAssetCollectionViewController.m; sourceTree = "<group>"; };
 		9E6B539519AAD6400028915A /* QBAssetCollectionViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBAssetCollectionViewControllerDelegate.h; sourceTree = "<group>"; };
@@ -206,6 +210,9 @@
 				9E6B53A219AAD6400028915A /* QBImagePickerGroupCell.m */,
 				9E6B53A319AAD6400028915A /* QBImagePickerVideoInfoView.h */,
 				9E6B53A419AAD6400028915A /* QBImagePickerVideoInfoView.m */,
+				9E50DCA719C17C5000088FB2 /* QBImageEditerViewController.h */,
+				9E50DCA819C17C5000088FB2 /* QBImageEditerViewController.m */,
+				9E50DCAA19C1834300088FB2 /* QBImageEditerViewControllerDelegate.h */,
 			);
 			path = QBImagePickerController;
 			sourceTree = "<group>";
@@ -317,6 +324,7 @@
 				9E6B53A719AAD6400028915A /* QBImagePickerAssetView.m in Sources */,
 				9E6B53AC19AAD6400028915A /* QBImagePickerVideoInfoView.m in Sources */,
 				9E6B53A619AAD6400028915A /* QBImagePickerAssetCell.m in Sources */,
+				9E50DCA919C17C5000088FB2 /* QBImageEditerViewController.m in Sources */,
 				9E6B53AB19AAD6400028915A /* QBImagePickerGroupCell.m in Sources */,
 				9E6B53A519AAD6400028915A /* QBAssetCollectionViewController.m in Sources */,
 				9E13F2C919AACFE100A9A836 /* main.m in Sources */,

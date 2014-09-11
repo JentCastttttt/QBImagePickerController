@@ -15,14 +15,13 @@
 // Delegate
 #import "QBAssetCollectionViewControllerDelegate.h"
 #import "QBImagePickerAssetCellDelegate.h"
+#import "QBImageEditerViewControllerDelegate.h"
 
 // Controllers
 #import "QBImagePickerController.h"
 
-@interface QBAssetCollectionViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, QBImagePickerAssetCellDelegate>
-{
-    UIWindow *m_window;
-}
+@interface QBAssetCollectionViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, QBImagePickerAssetCellDelegate,QBImageEditerViewControllerDelegate>
+
 @property (nonatomic, assign) id<QBAssetCollectionViewControllerDelegate> delegate;
 @property (nonatomic, retain) ALAssetsGroup *assetsGroup;
 
@@ -34,6 +33,8 @@
 @property (nonatomic, assign) BOOL showsFooterDescription;
 
 @property (nonatomic, assign) BOOL allowsMultipleSelection;
+@property (nonatomic, assign) BOOL allowsEdit;
+
 @property (nonatomic, assign) BOOL limitsMinimumNumberOfSelection;
 @property (nonatomic, assign) BOOL limitsMaximumNumberOfSelection;
 @property (nonatomic, assign) NSUInteger minimumNumberOfSelection;

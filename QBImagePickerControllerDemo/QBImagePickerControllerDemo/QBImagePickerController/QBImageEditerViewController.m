@@ -8,28 +8,40 @@
  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#import <UIKit/UIKit.h>
-#import <AssetsLibrary/AssetsLibrary.h>
+#import "QBImageEditerViewController.h"
 
-// Delegate
-#import "QBImagePickerAssetCellDelegate.h"
-#import "QBImagePickerAssetViewDelegate.h"
+@implementation QBImageEditerViewController
 
-@interface QBImagePickerAssetCell : UITableViewCell <QBImagePickerAssetViewDelegate>
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.navigationController.navigationBar setHidden:YES];
+}
 
-@property (nonatomic, assign) id<QBImagePickerAssetCellDelegate> delegate;
-@property (nonatomic, copy) NSArray *assets;
-@property (nonatomic, assign) CGSize imageSize;
-@property (nonatomic, assign) NSUInteger numberOfAssets;
-@property (nonatomic, assign) CGFloat margin;
-@property (nonatomic, assign) BOOL allowsMultipleSelection;
-@property (nonatomic, assign) BOOL allowsEdit;
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self.navigationController.navigationBar setHidden:NO];
+}
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier imageSize:(CGSize)imageSize numberOfAssets:(NSUInteger)numberOfAssets margin:(CGFloat)margin;
+- (void)viewDidLoad
+{
+    UIImageView *imgView = [[UIImageView alloc] initWithFrame:self.view.frame];
+    [imgView setBackgroundColor:[UIColor greenColor]];
+    imgView.userInteractionEnabled = NO;
+    CGImageRef imgRef = [[self.asset defaultRepresentation] fullScreenImage];
+    [imgView setImage:[UIImage imageWithCGImage:imgRef]];
+    [self.view addSubview:imgView];
+    [imgView release];
+}
 
-- (void)selectAssetAtIndex:(NSUInteger)index;
-- (void)deselectAssetAtIndex:(NSUInteger)index;
-- (void)selectAllAssets;
-- (void)deselectAllAssets;
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.delegate editerViewController:self didFinishPickingAsset:self.asset];
+}
+
+-(void) dealloc
+{
+    [_asset release];
+    [super dealloc];
+}
 
 @end

@@ -57,6 +57,9 @@
 
 - (void)setAllowsMultipleSelection:(BOOL)allowsMultipleSelection
 {
+    if (allowsMultipleSelection) {
+        _allowsEdit = NO;
+    }
     _allowsMultipleSelection = allowsMultipleSelection;
     
     // Set property
@@ -65,6 +68,14 @@
             [(QBImagePickerAssetView *)subview setAllowsMultipleSelection:self.allowsMultipleSelection];
         }
     }
+}
+
+- (void)setAllowsEdit:(BOOL)allowsEdit
+{
+    if (allowsEdit) {
+        _allowsMultipleSelection = NO;
+    }
+    _allowsEdit = allowsEdit;
 }
 
 - (void)dealloc

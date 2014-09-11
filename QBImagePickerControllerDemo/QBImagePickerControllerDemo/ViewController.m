@@ -90,7 +90,9 @@
 {
     QBImagePickerController *imagePickerController = [[QBImagePickerController alloc] init];
     imagePickerController.delegate = self;
+    
     imagePickerController.allowsMultipleSelection = NO;
+    imagePickerController.allowsEdit = YES;
     
     UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:imagePickerController];
     //Navigation Title Color and FontStyle

@@ -13,6 +13,7 @@
 // Views
 #import "QBImagePickerAssetCell.h"
 #import "QBImagePickerFooterView.h"
+#import "QBImageEditerViewController.h"
 
 @interface QBAssetCollectionViewController ()
 
@@ -95,12 +96,6 @@
     
     // Flash scroll indicators
     [self.tableView flashScrollIndicators];
-}
-
--(void) viewDidDisappear:(BOOL)animated
-{
-    [m_window setHidden:YES];
-    [m_window release];
 }
 
 - (void)setShowsCancelButton:(BOOL)showsCancelButton
@@ -189,7 +184,7 @@
 {
     if(self.allowsMultipleSelection) {
         // Set done button
-        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done)];
+        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"确认" style:UIBarButtonItemStyleDone target:self action:@selector(done)];//[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done)];
         doneButton.enabled = NO;
         
         [self.navigationItem setRightBarButtonItem:doneButton animated:NO];
@@ -197,7 +192,7 @@
         [doneButton release];
     } else if(self.showsCancelButton) {
         // Set cancel button
-        UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)];
+        UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStyleDone target:self action:@selector(cancel)];//[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)];
         
         [self.navigationItem setRightBarButtonItem:cancelButton animated:NO];
         [cancelButton release];
@@ -422,6 +417,11 @@
     }
 }
 
+#pragma mark - QBImageEidterViewControllerDelegate
+- (void)editerViewController:(QBImageEditerViewController *)assetCollectionViewController didFinishPickingAsset:(ALAsset *)asset
+{
+    [self.delegate assetCollectionViewController:self didFinishPickingAsset:asset];
+}
 
 #pragma mark - QBImagePickerAssetCellDelegate
 
@@ -459,7 +459,17 @@
 //            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
 //        }
     } else {
-        [self.delegate assetCollectionViewController:self didFinishPickingAsset:asset];
+        if (self.allowsEdit) {
+            QBImageEditerViewController *editer = [[QBImageEditerViewController alloc] init];
+            editer.delegate = self;
+            editer.title = @"裁剪图片";
+            editer.asset = asset;
+            [self.navigationController pushViewController:editer animated:YES];
+            [editer release];
+        } else {
+            [self.delegate assetCollectionViewController:self didFinishPickingAsset:asset];
+ 
+        }
     }
 }
 

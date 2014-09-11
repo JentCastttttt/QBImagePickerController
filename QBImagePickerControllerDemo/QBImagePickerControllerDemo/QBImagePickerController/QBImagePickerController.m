@@ -51,6 +51,8 @@
         self.fullScreenLayoutEnabled = YES;
         
         self.allowsMultipleSelection = NO;
+        self.allowsEdit = NO;
+        
         self.limitsMinimumNumberOfSelection = NO;
         self.limitsMaximumNumberOfSelection = NO;
         self.minimumNumberOfSelection = 0;
@@ -170,8 +172,6 @@
     self.navigationController.navigationBar.barStyle = self.previousBarStyle;
     self.navigationController.navigationBar.translucent = self.previousBarTranslucent;
     [[UIApplication sharedApplication] setStatusBarStyle:self.previousStatusBarStyle animated:YES];
-//    [m_window release];
-//    [m_window setHidden:YES];
 }
 
 - (void)setShowsCancelButton:(BOOL)showsCancelButton
@@ -179,7 +179,7 @@
     _showsCancelButton = showsCancelButton;
     
     if(self.showsCancelButton) {
-        UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)];
+        UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStyleDone target:self action:@selector(cancel)];//[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)];
         [self.navigationItem setRightBarButtonItem:cancelButton animated:NO];
         [cancelButton release];
     } else {
@@ -291,6 +291,7 @@
     assetCollectionViewController.showsFooterDescription = showsFooterDescription;
     
     assetCollectionViewController.allowsMultipleSelection = self.allowsMultipleSelection;
+    assetCollectionViewController.allowsEdit = self.allowsEdit;
     assetCollectionViewController.limitsMinimumNumberOfSelection = self.limitsMinimumNumberOfSelection;
     assetCollectionViewController.limitsMaximumNumberOfSelection = self.limitsMaximumNumberOfSelection;
     assetCollectionViewController.minimumNumberOfSelection = self.minimumNumberOfSelection;
@@ -300,7 +301,6 @@
     
     [assetCollectionViewController release];
 }
-
 
 #pragma mark - QBAssetCollectionViewControllerDelegate
 
@@ -317,26 +317,6 @@
 
 - (void)assetCollectionViewController:(QBAssetCollectionViewController *)assetCollectionViewController didFinishPickingAssets:(NSArray *)assets
 {
-//    m_window = [[UIWindow alloc] initWithFrame:CGRectMake(0, 0, 320, SCREEN_HEIGHT)];
-//    m_window.windowLevel = UIWindowLevelStatusBar + 1;//UIWindowLevelAlert+1;
-//    m_window.backgroundColor = [[UIColor grayColor] colorWithAlphaComponent:0.2];
-//    [m_window makeKeyAndVisible];
-//    
-//    UIActivityIndicatorView *actView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-//    actView.frame = CGRectMake(150, (SCREEN_HEIGHT - 20)/2-11, 20, 20);
-//    [actView startAnimating];
-//    [m_window addSubview:actView];
-//    [actView release];
-//    
-//    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, actView.frame.origin.y + 25, 320, 20)];
-//    label.text = @"准备进行上传...";
-//    label.backgroundColor = [UIColor clearColor];
-//    label.textColor = [UIColor whiteColor];
-//    label.textAlignment = NSTextAlignmentCenter;
-//    label.font = [UIFont systemFontOfSize:16.0f];
-//    [m_window addSubview:label];
-//    [label release];
-    
     if([self.delegate respondsToSelector:@selector(imagePickerControllerWillFinishPickingMedia:)]) {
         [self.delegate imagePickerControllerWillFinishPickingMedia:self];
     }

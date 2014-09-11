@@ -29,7 +29,7 @@
     //origination from (0,20,width,height) not (0,0,width,height)
     navi.navigationBar.translucent = NO;
     //navigation background Color
-    navi.navigationBar.barTintColor = [UIColor colorWithRed:151/255.0 green:217/255.0 blue:204/255.0 alpha:0.5];
+    navi.navigationBar.barTintColor = [UIColor colorWithRed:158/255.0 green:207/255.0 blue:240/255.0 alpha:0.5];
     //navigation letf or right nafigationItem Color
     navi.navigationBar.tintColor = [UIColor whiteColor];
     self.rootNaviController = navi;

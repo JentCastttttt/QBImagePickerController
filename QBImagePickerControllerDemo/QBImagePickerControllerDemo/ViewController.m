@@ -21,6 +21,13 @@
 	// Do any additional setup after loading the view, typically from a nib.
     self.view.backgroundColor = [UIColor whiteColor];
     
+    
+    UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(20, 60, 280, 100)];
+    [img setBackgroundColor:[UIColor brownColor]];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"Default@2x" ofType:@"png"];
+    [img setImage:[UIImage imageWithContentsOfFile:path]];
+    [self.view addSubview:img];
+    [img release];
 }
 
 /**

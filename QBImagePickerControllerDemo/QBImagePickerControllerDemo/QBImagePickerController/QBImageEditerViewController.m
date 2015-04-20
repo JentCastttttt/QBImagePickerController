@@ -15,22 +15,29 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [self.navigationController.navigationBar setHidden:YES];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [self.navigationController.navigationBar setHidden:NO];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
 }
 
 - (void)viewDidLoad
 {
+    UIScrollView *scroller = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
+    [self.view addSubview:scroller];
+    [scroller release];
+    
     UIImageView *imgView = [[UIImageView alloc] initWithFrame:self.view.frame];
     [imgView setBackgroundColor:[UIColor greenColor]];
     imgView.userInteractionEnabled = NO;
     CGImageRef imgRef = [[self.asset defaultRepresentation] fullScreenImage];
     [imgView setImage:[UIImage imageWithCGImage:imgRef]];
-    [self.view addSubview:imgView];
+    [scroller addSubview:imgView];
     [imgView release];
+    
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event

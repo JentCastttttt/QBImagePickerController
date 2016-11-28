@@ -459,17 +459,17 @@
 //            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
 //        }
     } else {
-        if (self.allowsEdit) {
-            QBImageEditerViewController *editer = [[QBImageEditerViewController alloc] init];
-            editer.delegate = self;
-            editer.title = @"裁剪图片";
-            editer.asset = asset;
-            [self.navigationController pushViewController:editer animated:YES];
-            [editer release];
-        } else {
+        //如果需要对选中的图片进行处理。  可以在此处操作
+//        if (self.allowsEdit) {
+//            QBImageEditerViewController *editer = [[QBImageEditerViewController alloc] init];
+//            editer.delegate = self;
+//            editer.title = @"裁剪图片";
+//            editer.asset = asset;
+//            [self.navigationController pushViewController:editer animated:YES];
+//            [editer release];
+//        } else {
             [self.delegate assetCollectionViewController:self didFinishPickingAsset:asset];
- 
-        }
+//        }
     }
 }
 
